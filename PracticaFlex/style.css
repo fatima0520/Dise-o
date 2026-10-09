@@ -1,0 +1,44 @@
+.contenedor {
+    width: 80%;
+    background-color: greenyellow;
+    margin: 20% auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+    flex-wrap: wrap;
+    
+    /*flex-direction: row-reverse;*/
+    //*height: 150px;
+    overflow: hidden;
+    */
+}
+
+.hijo {
+    
+}
+
+.hijo:nth-child(1) {
+    background-color: red;
+    width: 200px;
+}
+
+.hijo:nth-child(2) {
+    background-color: palevioletred;
+    flex: 2 1 200px;
+}
+
+.hijo:nth-child(3) {
+    background-color: gray;
+    flex: 3;
+}
+
+.hijo:nth-child(4) {
+    background-color: blue;
+    flex: 1;
+}
+
+.hijo:nth-child(5) {
+    background-color: yellow;
+    flex: 1;
+}

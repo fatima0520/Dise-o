@@ -1,0 +1,666 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Nouvel-Regular";
+  /**/
+  src: url(../fonts/NouvelRRegular.ttf);
+}
+
+@font-face {
+  font-family: "Nouvel-Light";
+  /**/
+  src: url(../fonts/NouvelRLight.ttf);
+}
+
+@font-face {
+  font-family: "Nouvel-SemiBold";
+  /**/
+  src: url(../fonts/NouvelRSemibold.ttf);
+}
+
+@font-face {
+  font-family: "Nouvel-Bold";
+  /**/
+  src: url(../fonts/NouvelRBold.ttf);
+}
+
+/*-------------------------------------resolver el problema con los
+heights heredado---------------------------*/
+body,
+html {
+  font-family: Nouvel-Regular;
+}
+
+.contenedor {
+  width: 100%;
+  height: 100vh; /* 100% of the viewport height si quiero ovbiar la barra de información del sistema*/
+  overflow: hidden;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row nowrap;
+  /*centramos los items en vertical y en horizontal*/
+  justify-content: center;
+  align-items: center;
+
+  /*aseguramos de que tiene las dimensiones del contenedor padre*/
+  width: 100%;
+  height: 100%;
+}
+
+.item1,
+.item3 {
+  flex: 1;
+  height: 100%;
+  /*Para hacer el posicionamiento relativo para que tome de referencia al padre*/
+  position: relative;
+}
+
+.item2 {
+  flex: 20;
+  height: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  justify-content: center;
+  align-items: center;
+}
+
+nav,
+.slider,
+.item-2-footer {
+  width: 100%;
+}
+
+.slider {
+  flex: 10;
+}
+
+.item-2-footer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ----------------------------------------- nav -----------------------------------------*/
+
+nav {
+  display: flex;
+  flex: 1 0 2rem;
+}
+
+.navcollapse {
+  display: none;
+  /* o visibility: hidden; */
+}
+
+.logo {
+  flex: 1;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.img-logo {
+  width: 100%;
+  height: 100%;
+
+  /* hacer responsive la imagen */
+  background-image: url(../img/logo2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.nav {
+  flex: 6;
+}
+
+/* es un id*/
+#menu {
+  list-style: none;
+  display: flex;
+  height: 100%;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#menu li a {
+  font-family: Righteous;
+  color: rgb(54, 50, 50);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+#menu li a:hover {
+  color: rgb(139, 128, 128);
+}
+
+/* ----------------------------------------- slider -----------------------------------------*/
+
+.slider {
+  background-image: url(../img/bg.jpg);
+  background-size: cover;
+  /*Para que el que esté viendo la web en movil vea la parte de la derecha de la imagen*/
+  background-position: 65% center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.legend {
+  font-family: Righteous;
+  color: white;
+  text-align: center;
+  /* para hacer rebordes a las letras */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.line-1 {
+  font-size: 1.4rem;
+}
+
+.line-2 {
+  font-size: 4rem;
+}
+
+.line-3 {
+  font-size: 2rem;
+}
+
+/* ----------------------------------------- footer -----------------------------------------*/
+
+.nav-slider {
+  width: 40%;
+  height: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  list-style-type: none;
+}
+
+.nav-slider li {
+  flex: 1;
+  height: 5px;
+}
+
+.nav-slider a {
+  width: 100%;
+  height: 5px;
+  display: inline-block;
+
+  background-color: black;
+}
+
+.active {
+  /*decirle que el gris se ponga por encima del negro*/
+  background-color: rgb(139, 128, 128) !important;
+}
+
+/* ------------------------------------------- botón lateral izquierdo -----------------------------*/
+
+.left {
+  width: 40px;
+  height: 220px;
+  background-color: rgb(179, 179, 179);
+
+  position: absolute;
+  right: 0;
+  /* 110 la mitad del boton */
+  top: calc((100% / 2) - 110px);
+}
+/*-------------------------------------------- botón lateral derecho -------------------------------*/
+.right {
+  width: 40px;
+  height: 220px;
+  background-color: rgb(179, 179, 179);
+
+  position: absolute;
+  left: 0;
+  /* 110 la mitad del boton */
+  top: calc((100% / 2) - 110px);
+}
+/*-----------------------------------------------siguiente sección--------------------------------------*/
+.about {
+  width: 100%;
+  height: 100vh;
+}
+.about-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+
+  justify-content: center;
+  align-items: center;
+}
+.about-1,
+.about-2,
+.about-3,
+.about-4 {
+  flex: 1;
+  height: 60%;
+  flex-flow: column nowrap;
+  display: flex;
+  justify-content: flex-end;
+}
+.about-header {
+  margin-bottom: auto;
+}
+progress {
+  appearance: none;
+}
+/*hay que hacrelos con los prefijos para que se vean bien pero solo en chrome y safari ()opera con o y firefox no se  */
+progress::-webkit-progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: grey;
+}
+progress::-webkit-progress-value {
+  background-color: rgb(226, 18, 18);
+}
+/*coje el primer párrafo de cada sección  con first-child*/
+.about-3 p:first-child,
+.about-4 p:first-child {
+  margin-bottom: 2rem;
+}
+/*---------------------------------------------*/
+
+h1 {
+  font-family: Righteous;
+  font-size: 3rem;
+}
+h4 {
+  font-family: Righteous;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+/*---------------------------------------------*/
+.team {
+  width: 100%;
+  height: 100vh;
+}
+.team-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+
+  justify-content: center;
+  align-items: center;
+}
+.team-header {
+  border-bottom: 1px solid rgb(255, 0, 0);
+  width: 100%;
+  flex: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.my-team {
+  flex: 6;
+  width: 100%;
+}
+.team-motto span {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.cards {
+  width: 100%;
+
+  height: 100%;
+  display: flex;
+  padding-left: 8rem;
+  padding-right: 8rem;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  gap: 2rem;
+}
+.card {
+  flex: 1;
+  height: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  gap: 4rem;
+}
+.team-pic {
+  flex: 5;
+}
+.card-footer {
+  align-self: end;
+  flex: 1;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+}
+.card:nth-child(1) .team-pic {
+  background-image: url(../img/team1.jpg);
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.card:nth-child(2) .team-pic {
+  background-image: url(../img/team2.jpg);
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.card:nth-child(3) .team-pic {
+  background-image: url(../img/team3.jpg);
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+/*------------------------------------------------------------------*/
+.works-1 {
+  width: 100%;
+  height: 100vh;
+}
+.works-1-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.works-1-header {
+  width: 100%;
+  flex: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.works-1-motto span {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+.works-1-body {
+  flex: 6;
+
+  width: 100%;
+  display: flex;
+}
+.works-1-izda {
+  flex: 1;
+  border: 2px solid gray;
+  background-image: url(../img/taranaki.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.works-1-dcha {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.works-1-up {
+  flex: 1;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+.works-1-down {
+  flex: 4;
+
+  background-image: url(../img/nz-nature.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+/*-----------------------------------------------------------------*/
+.works-2 {
+  width: 100%;
+  height: 100vh;
+}
+.works-2-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.works-2-izda {
+  border: 1px solid red;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.works-2-dcha {
+  border: 1px solid rgb(45, 179, 100);
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.works-2-i-up {
+  border: 1px solid rgb(75, 51, 212);
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  align-items: center;
+  color: white;
+  background-color: black;
+}
+.works-2-i-up p:first-child {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+.works-2-i-down {
+  border: 1px solid rgb(92, 194, 151);
+  flex: 6;
+  background-image: url(../img/auckland.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.works-2-d-up {
+  border: 1px solid rgb(96, 207, 32);
+  flex: 1;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+}
+.works-2-d-up p {
+  padding: 2rem;
+}
+.works-2-d-down {
+  border: 1px solid rgb(85, 185, 39);
+  flex: 6;
+  background-image: url(../img/colourful.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+/*----------------------------------------------------------------------*/
+.works-3 {
+  width: 100%;
+  height: 100vh;
+}
+.works-3-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.works-3-izda {
+  border: 1px solid red;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.works-3-dcha {
+  border: 1px solid rgb(45, 179, 100);
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.works-3-i-up {
+  border: 1px solid rgb(75, 51, 212);
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  align-items: center;
+  color: white;
+  background-color: black;
+}
+.works-3-i-up p:first-child {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+.works-3-i-down {
+  border: 1px solid rgb(92, 194, 151);
+  flex: 6;
+  background-image: url(../img/cave1.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.works-3-d-up {
+  border: 1px solid rgb(96, 207, 32);
+  flex: 1;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+}
+.works-3-d-up p {
+  padding: 2rem;
+}
+.works-3-d-down {
+  border: 1px solid rgb(85, 185, 39);
+  flex: 6;
+  background-image: url(../img/cave2.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+/*--------------------------------------------------------------------------------------------*/
+.services {
+  width: 100%;
+  height: 100vh;
+}
+.services-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+.services-header {
+  flex: 2;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.services-body {
+  flex: 6;
+  width: 60%;
+
+  display: flex;
+  flex-flow: row wrap;
+}
+.services-motto span {
+  text-transform: uppercase;
+}
+.ser {
+  /*grow / shrink/ basis*/
+  flex: 1 0 50%;
+  padding: 2rem;
+  position: relative;
+}
+.ser > p:first-child {
+  margin-bottom: 2rem;
+}
+/*.ser p:first-child::before{
+  content: "";
+}
+.ser p:first-child::after{
+  content: "";
+}*/
+.ser1,
+.ser2 {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: end;
+}
+
+.ser1,
+.ser3 {
+  text-align: right;
+}
+/*estamos dibujando el borde del pseudo elemento (before)*/
+.ser1::before {
+  /**/
+  content: "";
+
+  position: absolute;
+  border: 1px solid rgb(181, 181, 181, 1);
+  width: 100%;
+  bottom: 0;
+  right: 2rem;
+}
+.ser2::before {
+  content: "";
+  border: 1px solid rgb(181, 181, 181, 1);
+  position: absolute;
+  height: 60%;
+  left: 0;
+  bottom: 2rem;
+}
+.ser3::before {
+  content: "";
+  border: 1px solid rgb(181, 181, 181, 1);
+  position: absolute;
+  height: 60%;
+  right: 0;
+  top: 2rem;
+}
+.ser4::before {
+  content: "";
+  border: 1px solid rgb(181, 181, 181, 1);
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  width: 100%;
+  
+}
