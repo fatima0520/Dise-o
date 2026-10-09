@@ -1,666 +1,919 @@
-@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 @font-face {
-  font-family: "Nouvel-Regular";
-  /**/
-  src: url(../fonts/NouvelRRegular.ttf);
+    font-family: "Nouvel-Regular";
+    /**/
+    src: url(../fonts/NouvelRRegular.ttf);
 }
 
 @font-face {
-  font-family: "Nouvel-Light";
-  /**/
-  src: url(../fonts/NouvelRLight.ttf);
+    font-family: "Nouvel-Light";
+    /**/
+    src: url(../fonts/NouvelRLight.ttf);
 }
 
 @font-face {
-  font-family: "Nouvel-SemiBold";
-  /**/
-  src: url(../fonts/NouvelRSemibold.ttf);
+    font-family: "Nouvel-SemiBold";
+    /**/
+    src: url(../fonts/NouvelRSemibold.ttf);
 }
 
 @font-face {
-  font-family: "Nouvel-Bold";
-  /**/
-  src: url(../fonts/NouvelRBold.ttf);
+    font-family: "Nouvel-Bold";
+    /**/
+    src: url(../fonts/NouvelRBold.ttf);
 }
 
 /*-------------------------------------resolver el problema con los
 heights heredado---------------------------*/
-body,
-html {
-  font-family: Nouvel-Regular;
+body, html {
+    font-family: Nouvel-Regular;
 }
 
 .contenedor {
-  width: 100%;
-  height: 100vh; /* 100% of the viewport height si quiero ovbiar la barra de información del sistema*/
-  overflow: hidden;
+    width: 100%;
+    height: 100vh; /* 100% of the viewport height si quiero ovbiar la barra de información del sistema*/
+    overflow: hidden;
 }
 
 .flex-container {
-  display: flex;
-  flex-flow: row nowrap;
-  /*centramos los items en vertical y en horizontal*/
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    /*centramos los items en vertical y en horizontal*/
+    justify-content: center;
+    align-items: center;
 
-  /*aseguramos de que tiene las dimensiones del contenedor padre*/
-  width: 100%;
-  height: 100%;
+    /*aseguramos de que tiene las dimensiones del contenedor padre*/
+    width: 100%;
+    height: 100%;
 }
 
-.item1,
-.item3 {
-  flex: 1;
-  height: 100%;
-  /*Para hacer el posicionamiento relativo para que tome de referencia al padre*/
-  position: relative;
+.item1, .item3 {
+    flex: 1;
+    height: 100%;
+    /*Para hacer el posicionamiento relativo para que tome de referencia al padre*/
+    position: relative;
+
+   
 }
 
 .item2 {
-  flex: 20;
-  height: 100%;
+    flex:20;
+    height: 100%;
 
-  display: flex;
-  flex-flow: column nowrap;
+    display: flex;
+    flex-flow: column nowrap;
 
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
+
+    
 }
 
-nav,
-.slider,
-.item-2-footer {
-  width: 100%;
+nav, .slider, .item-2-footer {
+    width: 100%;
+
 }
 
 .slider {
-  flex: 10;
+    flex: 10;
 }
 
 .item-2-footer {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+h1 {
+    font-family: Righteous;
+    font-size: 3rem;
+}
+
+h4 {
+    font-family: Righteous;
+    font-size: 1.2rem;
+    text-transform: uppercase;
 }
 
 /* ----------------------------------------- nav -----------------------------------------*/
 
 nav {
-  display: flex;
-  flex: 1 0 2rem;
+    display: flex;
+    flex: 1 0 2rem;
 }
 
 .navcollapse {
-  display: none;
-  /* o visibility: hidden; */
+    display: none;
+    /* o visibility: hidden; */
 }
 
 .logo {
-  flex: 1;
-  height: 100%;
-  padding: 0.5rem;
+    flex:1;
+    height: 100%;
+    padding: 0.5rem;
+
 }
 
 .img-logo {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 
-  /* hacer responsive la imagen */
-  background-image: url(../img/logo2.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
+    /* hacer responsive la imagen */
+    background-image: url(../img/logo2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .nav {
-  flex: 6;
+    flex: 6;
+
 }
 
 /* es un id*/
 #menu {
-  list-style: none;
-  display: flex;
-  height: 100%;
-  gap: 1rem;
-  justify-content: flex-end;
-  align-items: center;
+    list-style: none;
+    display: flex;
+    height: 100%;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 #menu li a {
-  font-family: Righteous;
-  color: rgb(54, 50, 50);
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 1.2rem;
+    font-family: Righteous;
+    color: rgb(54, 50, 50);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.2rem;
 }
 
 #menu li a:hover {
-  color: rgb(139, 128, 128);
+    color: rgb(139, 128, 128);
 }
 
 /* ----------------------------------------- slider -----------------------------------------*/
 
 .slider {
-  background-image: url(../img/bg.jpg);
-  background-size: cover;
-  /*Para que el que esté viendo la web en movil vea la parte de la derecha de la imagen*/
-  background-position: 65% center;
-  background-repeat: no-repeat;
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+    /*Para que el que esté viendo la web en movil vea la parte de la derecha de la imagen*/
+    background-position: 65% center;
+    background-repeat: no-repeat;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .legend {
-  font-family: Righteous;
-  color: white;
-  text-align: center;
-  /* para hacer rebordes a las letras */
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+    font-family: Righteous;
+    color: white;
+    text-align: center;
+    /* para hacer rebordes a las letras */
+    text-shadow: 1px 1px 1px rgba(0,0,0,.7); 
 }
 
 .line-1 {
-  font-size: 1.4rem;
+    font-size: 1.4rem;
 }
 
 .line-2 {
-  font-size: 4rem;
+    font-size: 4rem
 }
 
 .line-3 {
-  font-size: 2rem;
+    font-size: 2rem;
 }
+
 
 /* ----------------------------------------- footer -----------------------------------------*/
 
 .nav-slider {
-  width: 40%;
-  height: 10px;
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
+    width: 40%;
+    height: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: .5rem;
 
-  list-style-type: none;
+    list-style-type: none;
 }
 
 .nav-slider li {
-  flex: 1;
-  height: 5px;
+    flex: 1;
+    height: 5px;
+
+
 }
 
 .nav-slider a {
-  width: 100%;
-  height: 5px;
-  display: inline-block;
+    width: 100%;
+    height: 5px;
+    display: inline-block;
 
-  background-color: black;
+    background-color: black;
+
 }
 
 .active {
-  /*decirle que el gris se ponga por encima del negro*/
-  background-color: rgb(139, 128, 128) !important;
+    /*decirle que el gris se ponga por encima del negro*/
+    background-color: rgb(223, 223, 223) !important;
 }
 
 /* ------------------------------------------- botón lateral izquierdo -----------------------------*/
 
 .left {
-  width: 40px;
-  height: 220px;
-  background-color: rgb(179, 179, 179);
-
-  position: absolute;
-  right: 0;
-  /* 110 la mitad del boton */
-  top: calc((100% / 2) - 110px);
+    width: 40px;
+    height: 220px;
+    background-color: rgb(179, 179, 179);
+    
+    position: absolute;
+    right: 0;
+    top: calc( (100% / 2) - 110px );
 }
-/*-------------------------------------------- botón lateral derecho -------------------------------*/
+
 .right {
-  width: 40px;
-  height: 220px;
-  background-color: rgb(179, 179, 179);
-
-  position: absolute;
-  left: 0;
-  /* 110 la mitad del boton */
-  top: calc((100% / 2) - 110px);
+    width: 40px;
+    height: 220px;
+    background-color: rgb(179, 179, 179);
+    
+    position: absolute;
+    left: 0;
+    top: calc( (100% / 2) - 110px );
 }
-/*-----------------------------------------------siguiente sección--------------------------------------*/
+
+/*-------------------------------------------- ABOUT -------------------------------------------*/
+
 .about {
-  width: 100%;
-  height: 100vh;
+    width: 100%;
+    height: 100vh;
 }
+
 .about-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-flow: row nowrap;
+    width: 100%;
+    height: 100%;
 
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+
+    justify-content: center;
+    align-items: center;
 }
-.about-1,
-.about-2,
-.about-3,
-.about-4 {
-  flex: 1;
-  height: 60%;
-  flex-flow: column nowrap;
-  display: flex;
-  justify-content: flex-end;
+
+.about-1, .about-2, .about-3, .about-4 {
+    flex: 1; /* para que tengan el mismo tamaño*/
+    height: 60%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end; /*lo bajamos todo abajo*/
 }
+
 .about-header {
-  margin-bottom: auto;
+    margin-bottom: auto;
 }
+
 progress {
-  appearance: none;
+    appearance: none;
 }
-/*hay que hacrelos con los prefijos para que se vean bien pero solo en chrome y safari ()opera con o y firefox no se  */
+
+/*Estilos para chrome*/
+/*accedo a la barra*/
 progress::-webkit-progress-bar {
-  width: 100%;
-  height: 4px;
-  background-color: grey;
+    width: 100%;
+    height: 4px;
+    background-color: rgb(202, 194, 194);
 }
+
+/*accedo al valor de la barra*/
 progress::-webkit-progress-value {
-  background-color: rgb(226, 18, 18);
+    background-color: red;
 }
-/*coje el primer párrafo de cada sección  con first-child*/
-.about-3 p:first-child,
-.about-4 p:first-child {
-  margin-bottom: 2rem;
-}
-/*---------------------------------------------*/
 
-h1 {
-  font-family: Righteous;
-  font-size: 3rem;
+.about-3 p:first-child, .about-4 p:first-child {
+    margin-bottom: 2rem;
 }
-h4 {
-  font-family: Righteous;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-}
-/*---------------------------------------------*/
+
+/*-------------------------------------------- TEAM -------------------------------------------*/
+
 .team {
-  width: 100%;
-  height: 100vh;
+    width: 100%;
+    height: 100vh;
 }
-.team-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
 
-  justify-content: center;
-  align-items: center;
+.team-container {
+    width: 100%; /*Así le damos todo el ancho y alto del padre*/
+    height: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
+
+    justify-content: center;
+    align-items: center;
 }
+
 .team-header {
-  border-bottom: 1px solid rgb(255, 0, 0);
-  width: 100%;
-  flex: 2;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+    width: 100%;
+    flex: 2;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
+
 .my-team {
-  flex: 6;
-  width: 100%;
+    width: 100%;
+    flex: 6;
 }
+
 .team-motto span {
-  text-transform: uppercase;
-  font-size: 1.2rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
 }
 
 .cards {
-  width: 100%;
+    width: 100%;
+    height: 100%;
 
-  height: 100%;
-  display: flex;
-  padding-left: 8rem;
-  padding-right: 8rem;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  gap: 2rem;
+    padding-left: 12rem;
+    padding-right: 12rem;
+  
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: 2rem;
 }
+
 .card {
-  flex: 1;
-  height: 100%;
+    flex: 1;
+    height: 100%;
 
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  gap: 4rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    gap: 4rem;
 }
+
+/*fotos*/
+
 .team-pic {
-  flex: 5;
+    flex: 5;
 }
+
 .card-footer {
-  align-self: end;
-  flex: 1;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  text-align: center;
-  width: 100%;
+    flex: 1;
+    align-self: end;
+    text-transform: uppercase;
+    font-size: .9rem;
+    width: 100%;
+    text-align: center;
 }
+
 .card:nth-child(1) .team-pic {
-  background-image: url(../img/team1.jpg);
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
+    background-image: url(../img/team1.jpg);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    fle
 }
 
 .card:nth-child(2) .team-pic {
-  background-image: url(../img/team2.jpg);
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
+    background-image: url(../img/team2.jpg);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
 }
 
 .card:nth-child(3) .team-pic {
-  background-image: url(../img/team3.jpg);
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
+    background-image: url(../img/team3.jpg);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
 }
 
-/*------------------------------------------------------------------*/
+/*-------------------------------------------- WORK 1 -------------------------------------------*/
+
 .works-1 {
-  width: 100%;
-  height: 100vh;
+    width: 100%;
+    height: 100vh;
 }
+
 .works-1-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
 }
+
 .works-1-header {
-  width: 100%;
-  flex: 2;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+    width: 100%;
+    flex: 2;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
-.works-1-motto span {
-  text-transform: uppercase;
-  font-size: 1.2rem;
+
+.work-1-motto span{
+    text-transform: uppercase;
+    font-size: 1.2rem;
 }
+
 .works-1-body {
-  flex: 6;
+    flex: 6; /*este flex le da el alto*/
+    width: 100%;
 
-  width: 100%;
-  display: flex;
+    display: flex;
 }
+
 .works-1-izda {
-  flex: 1;
-  border: 2px solid gray;
-  background-image: url(../img/taranaki.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+    flex: 1;
+    background-image: url(../img/taranaki.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
+
 .works-1-dcha {
-  flex: 1;
-  display: flex;
-  flex-flow: column nowrap;
+    flex: 1;
+
+    display: flex;
+    flex-flow: column nowrap;
 }
+
 .works-1-up {
-  flex: 1;
-  background-color: black;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    flex: 1;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  font-size: 2rem;
-  text-transform: uppercase;
+    font-size: 2rem;
+    text-transform: uppercase;
 }
+
 .works-1-down {
-  flex: 4;
+    flex: 4;
 
-  background-image: url(../img/nz-nature.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+    background-image: url(../img/nz-nature.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
-/*-----------------------------------------------------------------*/
+
+/*-------------------------------------------- WORK 2 -------------------------------------------*/
+
 .works-2 {
-  width: 100%;
-  height: 100vh;
+    width: 100%;
+    height: 100vh;
 }
+
 .works-2-container {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
 }
+
 .works-2-izda {
-  border: 1px solid red;
-  flex: 1;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
+    flex: 1;
+    height: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
 }
-.works-2-dcha {
-  border: 1px solid rgb(45, 179, 100);
-  flex: 1;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
+
+.works-2-dcha{
+    flex: 1;
+    height: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
 }
+
 .works-2-i-up {
-  border: 1px solid rgb(75, 51, 212);
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  flex-flow: column nowrap;
-  align-items: center;
-  color: white;
-  background-color: black;
+    flex: 1;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+    color: white;
 }
+
 .works-2-i-up p:first-child {
-  text-transform: uppercase;
-  font-size: 2rem;
+    text-transform: uppercase;
+    font-size: 2rem;
 }
+
 .works-2-i-down {
-  border: 1px solid rgb(92, 194, 151);
-  flex: 6;
-  background-image: url(../img/auckland.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+    flex: 6;
+
+    background-image: url(../img/auckland.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
+
 .works-2-d-up {
-  border: 1px solid rgb(96, 207, 32);
-  flex: 1;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  padding: 0 2rem;
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
 }
-.works-2-d-up p {
-  padding: 2rem;
-}
+
+
 .works-2-d-down {
-  border: 1px solid rgb(85, 185, 39);
-  flex: 6;
-  background-image: url(../img/colourful.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+    flex: 6;
+
+     background-image: url(../img/colourful.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
-/*----------------------------------------------------------------------*/
+
+/*-------------------------------------------- WORK 3 -------------------------------------------*/
+
 .works-3 {
-  width: 100%;
-  height: 100vh;
+    width: 100%;
+    height: 100vh;
 }
+
 .works-3-container {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
 }
+
 .works-3-izda {
-  border: 1px solid red;
-  flex: 1;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
+    flex: 1;
+    height: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
 }
-.works-3-dcha {
-  border: 1px solid rgb(45, 179, 100);
-  flex: 1;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
+
+.works-3-dcha{
+    flex: 1;
+    height: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
 }
+
 .works-3-i-up {
-  border: 1px solid rgb(75, 51, 212);
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  flex-flow: column nowrap;
-  align-items: center;
-  color: white;
-  background-color: black;
+    flex: 1;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+    color: white;
 }
+
 .works-3-i-up p:first-child {
-  text-transform: uppercase;
-  font-size: 2rem;
+    text-transform: uppercase;
+    font-size: 2rem;
 }
+
 .works-3-i-down {
-  border: 1px solid rgb(92, 194, 151);
-  flex: 6;
-  background-image: url(../img/cave1.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+    flex: 6;
+
+    background-image: url(../img/cave1.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
+
 .works-3-d-up {
-  border: 1px solid rgb(96, 207, 32);
-  flex: 1;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  padding: 0 2rem;
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
 }
-.works-3-d-up p {
-  padding: 2rem;
-}
+
+
 .works-3-d-down {
-  border: 1px solid rgb(85, 185, 39);
-  flex: 6;
-  background-image: url(../img/cave2.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+    flex: 6;
+
+     background-image: url(../img/cave2.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
-/*--------------------------------------------------------------------------------------------*/
+
+/*-------------------------------------------- SERVICES -------------------------------------------*/
+
 .services {
-  width: 100%;
-  height: 100vh;
+    width: 100%;
+    height: 100vh;
 }
+
 .services-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-flow: column nowrap;
-}
-.services-header {
-  flex: 2;
+    width: 100%;
+    height: 100%;
 
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: column nowrap;
 }
-.services-body {
-  flex: 6;
-  width: 60%;
 
-  display: flex;
-  flex-flow: row wrap;
+.services-header { 
+    flex: 2;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
+
 .services-motto span {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
+
+.services-body {
+    flex: 6;
+    width: 60%;
+
+    display: flex;
+    flex-flow: row wrap;
+
+}
+
+
 .ser {
-  /*grow / shrink/ basis*/
-  flex: 1 0 50%;
-  padding: 2rem;
-  position: relative;
+    flex: 1 0 50%; /*en wrap, cada uno tiene que tener un tamaño base de 50%, y se bajan los que no caben*/
+    padding: 2rem;
+    position: relative;
+   
 }
+
+/*de todos los contenedores ser, que el primer parrafo tenga margen*/
 .ser > p:first-child {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
-/*.ser p:first-child::before{
-  content: "";
+
+/* Siempre tiene que estar el elemento content*/
+.ser1, .ser2 {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: end;
 }
-.ser p:first-child::after{
-  content: "";
-}*/
-.ser1,
-.ser2 {
+
+.ser1, .ser3 {
+    text-align: right;
+}
+
+.ser1::before {
+    content: "";
+    border: 1px solid rgb(184, 182, 182);
+
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    right: 2rem;
+}
+
+.ser2::before {
+    content: "";
+    border: 1px solid rgb(184, 182, 182);
+
+    position: absolute;
+    height: 60%;
+    left: 0;
+    bottom: 2rem;
+}
+
+.ser3::before {
+    content: "";
+    border: 1px solid rgb(184, 182, 182);
+
+    position: absolute;
+    height: 60%;
+    right: 0;
+    top: 2rem;
+}
+
+.ser4::before {
+    content: "";
+    border: 1px solid rgb(184, 182, 182);
+
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 2rem;
+}
+
+
+/*-------------------------------------------- NEWS -------------------------------------------*/
+
+.news {
+    height: 100vh;
+    width: 100%;
+}
+
+.news-container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.news-header {
+    width: 100%;
+    flex: 2;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.news-motto {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+.news-body {
+    width: 60%;
+    flex: 6;
+
+    display: flex;
+}
+
+.news-foto{
+    flex: 2;
+}
+
+.news-pic {
+    width: 100%;
+    height: 80%;
+    background-image: url(../img/woman2.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+}
+
+.news-text {
+    flex: 3;
+    padding: 2rem;
+}
+
+.published {
+    font-family: "Nouvel-SemiBold";
+}
+
+.title {
+    padding: .5rem 0;
+}
+
+.cathegory {
+    font-size: 1.2rem;
+}
+
+.excerpt, .par-2 {
+    margin-top: 1rem;
+}
+
+.news-body-nav {
+    flex: 1;
+
+    width: 10%;
+}
+
+.news-nav {
+    margin: 2rem auto;
+    width: 80%;
+}
+
+.news-nav, .news-body-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.news-nav a, .news-body-nav a {
+    display: inline-block;
+    background-color: black;
+    flex: 1 0 40px;
+    height: 4px;
+}
+
+
+
+/*-------------------------------------------- Quote -------------------------------------------*/
+
+.quote{
+   height: 100vh;
+    width: 100%;
+}
+.quote-container{
+  height: 100%;
+ width: 100%;
+ padding: 5%;
+}
+.quote-item{
+  height: 100;
+    width: 100%;
+    background-image: url(../img/siluette.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    color: white;
+}
+
+.quote-text{
+  font-size: 1.4rem;
+ 
+}
+.author{
+  font-size: 1.8rem;
+  font-family: "Nouvel-SemiBold" ;
+  margin-top: 1rem;
+}
+
+/*--------------------------------------------------------------------------------------------------------------*/
+
+.contact{
+  height: 100vh;
+  width: 100%;
+}
+.contact-container{
+  height: 100%;
+  width: 100%;
+
   display: flex;
   flex-flow: column nowrap;
-  justify-content: end;
+  justify-content: center;
+  align-items: center;
 }
-
-.ser1,
-.ser3 {
-  text-align: right;
-}
-/*estamos dibujando el borde del pseudo elemento (before)*/
-.ser1::before {
-  /**/
-  content: "";
-
-  position: absolute;
-  border: 1px solid rgb(181, 181, 181, 1);
+.contact-header{
+  flex:2;
+  border: 1px solid red ;
   width: 100%;
-  bottom: 0;
-  right: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
 }
-.ser2::before {
-  content: "";
-  border: 1px solid rgb(181, 181, 181, 1);
-  position: absolute;
-  height: 60%;
-  left: 0;
-  bottom: 2rem;
+.contact-body{
+  flex: 6;
+  border: 1px solid red ;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 60%;
 }
-.ser3::before {
-  content: "";
-  border: 1px solid rgb(181, 181, 181, 1);
-  position: absolute;
-  height: 60%;
-  right: 0;
-  top: 2rem;
+.contact-body-header{
+  display: flex;
+  flex-flow: column nowrap;
 }
-.ser4::before {
-  content: "";
-  border: 1px solid rgb(181, 181, 181, 1);
-  position: absolute;
-  top: 0;
-  left: 2rem;
+.contact-line-1, .contact-line-2{
+width: 100%;
+justify-content: space-between;
+align-items: center;
+display: flex;
+}
+input[type=text]{
   width: 100%;
-  
+  text-align: center;
+  border-bottom: 1px solid black;
+  font-family: "Nuvel-Regular";
+  font-size: 1.1rem;
+  padding: .5rem;
 }
