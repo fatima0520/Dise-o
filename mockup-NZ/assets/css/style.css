@@ -109,6 +109,9 @@ h4 {
 nav {
     display: flex;
     flex: 1 0 2rem;
+    justify-content: space-between;
+    align-items: center;
+    
 }
 
 .navcollapse {
@@ -136,6 +139,9 @@ nav {
 
 .nav {
     flex: 6;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: end;
 
 }
 
@@ -273,6 +279,7 @@ nav {
     flex: 1; /* para que tengan el mismo tamaño*/
     height: 60%;
 
+    gap: 2rem;
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-end; /*lo bajamos todo abajo*/
@@ -328,6 +335,7 @@ progress::-webkit-progress-value {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border: 1px solid yellowgreen;
 }
 
 .my-team {
@@ -351,6 +359,7 @@ progress::-webkit-progress-value {
     flex-flow: row wrap;
     justify-content: space-around;
     gap: 2rem;
+    border: 1px solid red ;
 }
 
 .card {
@@ -909,6 +918,13 @@ justify-content: space-between;
 align-items: center;
 display: flex;
 }
+.contact-line-1 span, .contact-line-2 span{
+flex: 1;
+}
+.contact-line-1 span:nth-child(2), .contact-line-2 span:nth-child(2){
+    border: 1px solid red ;
+
+}
 input[type=text]{
   width: 100%;
   text-align: center;
@@ -916,4 +932,233 @@ input[type=text]{
   font-family: "Nuvel-Regular";
   font-size: 1.1rem;
   padding: .5rem;
+  margin-top: 2rem;
+}
+input[type=text]:focus, textarea:focus{
+    outline: none ;
+    border-bottom: 2px solid red ;
+}
+.mensaje{
+    display: flex;
+    flex-flow: column nowrap;
+}
+.mensaje span{
+    text-align: center;
+    margin-top: 2rem;
+    color: grey;
+}
+textarea{
+    width: 100%;
+    margin-top: .5rem;
+    height: 100px;
+    font-family: Nouvel-Regular;
+    padding: .5rem;
+    resize: none;
+}
+.submit{
+    width: 100%;
+    margin-top: 1rem;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1rem;
+    padding: .5rem;
+    border: 0;
+    cursor: pointer;
+}
+/*--------*/
+.footer{
+    height: 100vh;
+    width: 100%;
+
+}
+.footer-container{
+    height: 100%;
+    width: 100%;
+    padding: 5%;
+
+    display: flex;
+    flex-flow: row nowrap;
+}
+.footer-izda{
+    flex: 1;
+    height: 100%;
+    background-image: url(../img/item1.jpg) ;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.footer-dcha{
+    flex: 1;
+    height: 100%;
+    background-image: url(../img/item2.jpg) ;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+footer{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.footer-logo{
+    width: 300px;
+ 
+    flex: 1;
+    background-image: url(../img/logo2.png) ;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+/*------------------------------------------------------------MEDIA ------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1550px) {
+    .cards{
+        gap: 1rem;
+        padding: 0 2rem;
+    
+    }
+    .team-header{
+        justify-content: space-between;
+        padding: 0 2rem;
+    }
+}
+
+/*ESTILOS GENERICOS SE VE EN SOLO PANTALLA */
+@media screen and (max-width: 900px){
+    /*quiero que se ocute pero que siga ocupando espacio */
+   .left, .right{
+    visibility: hidden;
+   }
+   /**/
+   #menu{
+    display: none;
+   }
+   .navcollapse{
+    display: inline-block;
+    border: 1px solid red ;
+    width: 30px;
+    height: 30px;
+   
+   
+   }
+   .nav-icon{
+    position: relative;
+   }
+   .nav-icon span{
+    flex: 1 0 50%;
+    display: inline-block;
+    border: 2px solid black;
+
+      position: absolute;
+   }
+   .nav-icon span:nth-child(1){
+
+     top: 0;
+     left: 0;
+   }
+   .nav-icon span:nth-child(2){
+    top: 0;
+      right: 0;
+   }
+   .nav-icon span:nth-child(3){
+
+     top: 10px;
+     left: 0;
+   }
+   .nav-icon span:nth-child(4){
+    top: 10px;
+      right: 0;
+   }
+   .nav-icon span:nth-child(5){
+
+     top: 21px;
+     left: 0;
+   }
+   .nav-icon span:nth-child(6){
+    top:  21px;
+     right: 0;
+   }
+   .logo{
+   
+    min-width: 120px;
+   }
+   .about-container{
+    flex-flow:  row wrap;
+    padding: 2rem;
+   }
+   .about-1{
+    display: none;
+   }
+    
+   .about-2{
+    border: 1px solid rgb(0, 255, 115) ;
+   }
+    
+   .about-3{
+    border: 1px solid rgb(172, 8, 98) ;
+   }
+    
+   .about-4{
+    border: 1px solid rgb(89, 0, 255) ;
+   }
+   .cards{
+    border: 2px solid  blue ;
+   }
+   
+   .card{
+    max-width: 45%;
+    flex: 1 0 40%;
+    height:50% ;
+   }
+   .team{
+    height: 150vh;
+   }
+    .team-header{
+        flex: 0;
+        margin-bottom: 4rem;
+    }
+    .team-header, .works-1-header, .services-header , .news-header , .contact-header{
+        flex: 0;
+        margin-bottom: 4rem;
+        justify-content: space-between;
+        border: 2px solid violet;
+        padding: 0 2rem;
+    }
+    .services{
+        margin-top: 4rem;
+        height: 75%;
+    }
+    .services-body{
+        width: 90%;
+    }
+    .news{
+        height: 75;
+    }
+    .news-body{
+        width: 100%;
+        padding: 0 2rem;
+    }
+    .contact{
+        height: 75vh;
+    }
+    .footer{
+        height: 200vh;
+        
+    }
+    .footer-dcha, .footer-izda{
+        flex: 1 0 100%;
+        height: 50%;
+    }
+    .footer-container{
+        gap: 2rem;
+    }
+    footer{
+        height: 25vh;
+        justify-content: start;
+    }
 }
