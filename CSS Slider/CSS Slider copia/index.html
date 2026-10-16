@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Slider</title>
+    <link rel="stylesheet" href="style_modificado.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- .carousel: envuelve TODO el slider (estados, ventana, flechas y puntos).
+             Antes tenías directamente .slider dentro de .container; ahora .slider
+             va dentro de .viewport, que a su vez va dentro de .carousel. -->
+        <div class="carousel">
+
+            <!-- 1) ESTADOS: tres radios con el MISMO name (solo uno marcado a la vez).
+                 Tienen que ir ANTES de .viewport, las flechas y los puntos, porque
+                 el selector "~" del CSS solo mira a los hermanos que vienen DESPUÉS.
+                 s1 = cards 1-2 | s2 = cards 2-3 | s3 = cards 3-4 -->
+            <input type="radio" name="slide" id="s1" checked>
+            <input type="radio" name="slide" id="s2">
+            <input type="radio" name="slide" id="s3">
+
+            <!-- 2) VENTANA: recorta la cinta para que solo se vean 2 cards -->
+            <div class="viewport">
+
+                <!-- CINTA: tu .slider de siempre, con tus 4 cards sin tocar -->
+                <div class="slider">
+
+                    <div class="card">
+                        <div class="pic"></div>
+                        <div class="content">
+                            <h4>Astronomía</h4>
+                            <h5>Europa, la luna de Júpiter</h5>
+                            <p>Nuevos datos de la sonda espacial sugieren que las capas de hielo ocultan un óceano subterráneo con más agua que la Tierra.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="pic"></div>
+                        <div class="content">
+                            <h4>Gastronomía</h4>
+                            <h5>Pasta Cremosa de Aguacate</h5>
+                            <p>Un plato rápido, saludable y lleno de sabor. Descubre el truco para lograr una textura ultrasuave usando solo cinco ingredientes frescos.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="pic"></div>
+                        <div class="content">
+                            <h4>Tecnología</h4>
+                            <h5>Guía de Desarrollo</h5>
+                            <p>Técnicas prácticas para estructurar proyectos complejos, priorizar tareas clave y mantener un estado de deep work continuo durante el día.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="pic"></div>
+                        <div class="content">
+                            <h4>Arquitectura</h4>
+                            <h5>La regla 60-30-10</h5>
+                            <p>Descubre cómo aplicar la fórmula clásica del interiorismo para equilibrar el color dominante, el secundario y los acentos sin recargar tus espacios.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 3) FLECHAS: cada una es un <label for="..."> que marca el radio destino.
+                 El CSS muestra solo las que tienen sentido en cada posición.
+                 p2: estando en s2, vuelve a s1 | p3: estando en s3, vuelve a s2
+                 n1: estando en s1, avanza a s2 | n2: estando en s2, avanza a s3 -->
+            <label class="arrow prev p2" for="s1">&#10094;</label>
+            <label class="arrow prev p3" for="s2">&#10094;</label>
+            <label class="arrow next n1" for="s2">&#10095;</label>
+            <label class="arrow next n2" for="s3">&#10095;</label>
+
+            <!-- 4) NAV DEL PIE: un punto por posición -->
+            <div class="dots">
+                <label for="s1" aria-label="Cards 1 y 2"></label>
+                <label for="s2" aria-label="Cards 2 y 3"></label>
+                <label for="s3" aria-label="Cards 3 y 4"></label>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
