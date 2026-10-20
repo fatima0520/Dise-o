@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body,html{
+    height: 100%;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(24, 25, 25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins, sans-serif;
+}     
+.carousel{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 0 4rem;
+    position: relative;
+    gap: 2rem;
+    .arrow{
+        color: blue;
+        position: absolute;
+        top: 230px; ;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: yellowgreen;
+            /*estio se puede hacer solo porque es un caracter*/ 
+        /*se le da el tamaño cpn el font size*/
+        font-size: 1.5rem;
+        line-height: 50px;
+        text-align: center;
+        cursor: pointer;
+        z-index: 9999;/*lo ponemos arriba en la pila de capas */
+        /*evitamos que se seleccione la flecha al pulsarlo como texto */
+        user-select: none;
+        transition: transformn .3s;
+        /*desabbilitamos cono situacion de partida , segun los dots se habiliten */
+        &:hover{
+            transform: translateY(-50%) scale(1.1);
+            
+        }
+
+
+    }
+    
+    .prev{
+        left: 5px;
+
+    }
+    .next{
+        right: 5px;
+
+    }
+    /*hay que mostrar las flechas que tengan sentido */
+
+
+    
+    .dots{
+        display: flex;
+        gap: 14px;
+        
+
+
+        label{
+            width: 14px;
+            height: 14px;
+            background-color: rgb(129, 126, 133);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background .3s, transform .3s;
+            /*los radius bottom solo puede estar uno activo */
+        }
+    }
+
+}              
+/*Los radiobutton se ocultan , solo los usamos  para  que interactuemos con sus labels*/                                      
+.carousel input{
+    /*desaparecen ellos y el espacio que tengan*/
+    display: none;
+}
+
+
+
+
+
+
+/*Establecemos la ventana por la que se van a ver solo dos cards. El ancho tiene que ser el ancho de un card*2 mas el gap entre cards*/
+.viewport{
+    width: 620px;
+    height: 460px;
+    overflow: hidden;/*Todo lo que salga del viewport se oculta */
+ 
+}
+/*Apartir de aqui es nesting */
+.slider{
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+    height: 100%;
+    width: max-content;/*el ancho del contenido es lo que mida todo su contenido, incluyendo el gap *//*esta todo el contenido ahí */
+    /*transform es para que me transicione un card de un lado al otro de manera suave */
+    transition: transform .5s ease;
+    position: relative;
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*CARD*/
+        .card{
+            width: 300px;
+            height: 300px;
+
+            flex-shrink: 0;/*esto me va a asegurar de que nunca me va a reducir el tamaño por debajo de 300px*/
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+            cursor: pointer;/*para poder interacturas con la tarjeta */
+            transition: all .5s;
+            position: relative;
+
+            &::before{/* la franja para tapar */
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            left: 260px;
+            top: 180px;
+            background-color: transparent;
+            border-bottom-right-radius: 40px;
+             box-shadow: 40px 40px 0 40 white;
+            z-index: 1;
+            }
+                
+
+            &:hover{
+                height: 440px;
+                .content p {
+                    opacity: 1;
+                }
+            }
+            .pic{
+                width: 100%;
+                height: 260px;
+                background-size: cover;
+                background-color: rgb(116, 116, 216);
+                position: relative;
+                
+                
+                &::before{
+                    content: "";
+                    position: absolute;
+                    background: rgb(244, 247, 244);
+                    bottom: -40px;
+                    border-radius: 40px 0 0 0;
+                    width: 100%;
+                    height: 80px;
+
+
+                }
+                &::after{
+                    content: "";
+                    position: absolute;
+                    background: rgb(46, 253, 4);
+                    border-radius: 50%;
+                    width: 80px;
+                    height: 80px;
+                    bottom: 40px;
+                    right: 0;
+                    background-color: transparent;
+                    border-bottom-right-radius: 40px;
+                    box-shadow: 40px 40px 0 40 white;
+                    z-index: 2;
+
+                }
+            }
+            .content{
+                position: relative;
+                padding: 1rem;
+                top: -40px;
+                z-index: ;
+                h4{
+                    text-transform: uppercase;
+                    margin-bottom: 0.5rem;
+                    &::before{
+                        content: "...";
+                        color: rgb(39, 44, 44);
+                    }
+                    &::after{
+                         content: "...";
+                         color: rgb(40, 43, 42);
+                    }
+                }
+                h5{
+                     margin-bottom: 0.5rem;
+                }
+                p{
+                    opacity: 0;
+                    font-size: 0.9rem;
+                    transition: .5s; 
+                }
+                
+            }
+            &:nth-child(1) .pic{
+                background-image: url(pic1.jpg);
+            ;}
+            &:nth-child(2) .pic{
+                background-image: url(pic2.jpg);
+            ;}
+            &:nth-child(3) .pic{
+                background-image: url(pic3.jpg);
+            ;}
+            &:nth-child(4) .pic{
+                background-image: url(pic4.jpg);
+            ;}
+
+
+        
+        }
+ /*el z-index */
+/*hace que uno se sub aencima del otro . este expresa el nievl de capa cuando lo subes verticalemete */
+
+/*para hacre el borde inverso hay que poner un circulo y hay que ponerle una sobra del mismo color del de abajoy al círculo hay que ponelo trasparente  */
+
+
+
+
+
+
+
+}
+
+
+/*-------------------------CONTROLAMOS EL SLIDER----------------------------------------------------------------------------------------------------------*/
+/*SI PINCHAMSO EN EL `RIMERO DOT`EL SLIDER DEBE QUEDARSE EN LLA POSIOCION INICIAL  */
+#s1:checked ~ .viewport .slider{transform: translateX(0);}
+/*SI PINCHAMOS EN EL SEGUNDO DOT SE TIENE QUE VER LAS FICHAS 2 Y 3 CON LO QUR PERDEMOS DE LA 320 DE LA PRIMERA Y DE LA SEGUNDSA */
+#s1:checked ~ .viewport .slider{transform: translateX(-320);}
+/*SI PINCHAMOS EN EL TERCER DOT SE TIENE QUE  VER LAS FICHAS 3,4 POR LO QUE PERDEMOS 320*2 */
+#s1:checked ~ .viewport .slider{transform: translateX(-640);}
+
+
+
+#s1:checked ~ .dots label [for="s1"],
+#s2:checked ~ .dots label [for="s2"],
+#s3:checked ~ .dots label [for="s3"]{
+    background-color: yellowgreen;
+    transform: scale(1.1);
+}
+/*dependo en sonde stamso conlo botaones qu eson circulps las flechas deben desaparecer  o aparecer */
+/*es mejpor sacarlo del nestin prqu ea la hora de hacer mla media quiery habta que poner importanta */
+#s1:checked ~ .n1{display: block;}
+/*si eatamos en el medi se debe de mopstrara p2 y n2 y que p2 me lleve a s1 y n2 me lleve a s3 */
+#s2:checked ~ .p2,
+#s2:checked ~ .n2{
+    display: block;
+}
+#s3:checked ~ .p3{display: block;}
+
+
+/* selector ~ combinacional explicado en clase anterirmente */
+
+
+
+
+
+
+
+
+
+
+

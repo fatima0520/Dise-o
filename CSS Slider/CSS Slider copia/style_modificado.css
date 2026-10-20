@@ -1,175 +1,270 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body,html{
-    height: 100%;
-}
-.container{
-    width: 100%;
-    height: 100%;
-    background-color: rgb(24, 25, 25);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Poppins, sans-serif;
-}     
-.carousel{
-    border: 1px solid red;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-    padding: 0 4rem;
-    position: relative;
-    gap: 2rem;
-}              
-/*Los radiobutton se ocultan , solo los usamos  para  que interactuemos con sus labels*/                                      
-.carousel input{
-    /*desaparecen ellos y el espacio que tengan*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+
+  background-color: rgb(24, 24, 24);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Poppins, sans-serif;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 0 4rem;
+  position: relative; /* Para que lo posicione respecto al div, no al body */
+  gap: 2rem;
+
+  .arrow {
+    color: grey;
+    position: absolute;
+    top: 230px;
+    transform: translateY(-50%); /* para asegurarme de que están en el centro */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: yellowgreen;
+    font-size: 1.5rem;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 9999;  /* las ponemos arriba en pila de capas */
+    user-select: none;  /* evitamos que se seleccione la flechita como texto */
+    transition: transform .3s;
+
+    /* deshabilitamos como situacion de partida, segun los dots se habiliten */
     display: none;
-}
 
+    &:hover {
+      transform: translateY(-50%) scale(1.1);
+    }
 
+  }
 
+  .prev {
+    left: 5px;
+  }
 
+  .next {
+    right: 5px;
+  }
 
+  /* Mostrar solo las flechas que tienen sentido según la posición de los cards */
 
-/*Establecemos la ventana por la que se van a ver solo dos cards. El ancho tiene que ser el ancho de un card*2 mas el gap entre cards*/
-.viewport{
-    width: 620px;
-    height: 460px;
-    overflow: hidden;/*Todo lo que salga del viewport se oculta */
-}
-/*Apartir de aqui es nesting */
-.slider{
+  .dots {
     display: flex;
-    align-items: center;
+    gap: 14px;
 
-    gap: 20px;
-    height: 100%;
-    width: max-content;/*el ancho del contenido es lo que mida todo su contenido, incluyendo el gap *//*esta todo el contenido ahí */
-    /*transform es para que me transicione un card de un lado al otro de manera suave */
-    transition: transform .5s ease;
+    label {
+      width: 14px;
+      height: 14px;
+      background-color: rgb(122, 122, 122);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background .3s, transform .3s;
+    }
+  }
+}
 
+/* Los radiobutton se ocultan, solo lo usamos para que interactuemos con sus labels */
 
+.carousel input {
+  display: none; /* Desaparecen ellos y el espacio que ocupaban */
+}
 
+/*  Establecemos la ventana para que se vean dos cards.
+    El ancho tiene que ser el ancho de un card * 2 más el gap entre cards */
+.viewport {
+  width: 620px;
+  height: 460px;
+  overflow: hidden; /* todo lo que salga del viewport se oculta */
+}
 
+.slider {
+  display: flex;
+  align-items: center;
 
+  gap: 20px;
 
+  height: 100%;
+  width: max-content; /* el ancho del slider es lo que mida todo su contenido, incluyendo el gap */
+  transition: transform 0.5s ease;
 
+  position: relative;
 
+  /* Con el NESTING los hijos están dentro del padre */
+  .card {
+    width: 300px;
+    height: 300px;
+    flex-shrink: 0; /* esto me asegura que los items flexibles nunca va a reducir su tamaño por debajo de los 300px */
+    background: white;
+    border-radius: 40px;
+    overflow: hidden;
+    cursor: pointer; /* para interactuar con la tarjeta */
+    transition: all 0.5s;
+    position: relative;
 
+    &::before {      /* franja */
+      content: "";
+      position: absolute;
 
+      width: 40px;
+      height: 40px;
+      left: 260px;
+      top: 180px;
+      background-color: transparent;
+      border-bottom-right-radius: 40px;
+      box-shadow: 40px 40px 0 40px white;
+      z-index: 1;
+    }
 
+    /* el & representa .card*/
+    &:hover {
+      height: 440px;
 
+      .content p {
+        opacity: 1;
+      }
+    }
 
+    .pic {
+      width: 100%;
+      height: 260px;
+      background-size: cover;
+      background-color: yellow;
+      position: relative;
 
-        /*CARD*/
-        .card{
-            width: 300px;
-            height: 300px;
+      &::before {         
+        content: "";
+        position: absolute;
+        background-color: white;
+        border-radius: 40px 0 0 0;
+        width: 100%;
+        height: 80px;
+        bottom: -40px;
+      }
 
-            flex-shrink: 0;/*esto me va a asegurar de que nunca me va a reducir el tamaño por debajo de 300px*/
-            background: white;
-            border-radius: 40px;
-            overflow: hidden;
-            cursor: pointer;/*para poder interacturas con la tarjeta */
-            transition: all .5s;
-            position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: transparent;
+        width: 80px;
+        height: 80px;
+        bottom: 40px;
+        border-radius: 50%;
+        right: 0;
+        z-index: 2; /* para asegurarnos de que no colisione */
+      }
+    }
 
-            &::before{
-            content: "";
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            left: 260px;
-            top: 180px;
-            background: red;
-            border-bottom-right-radius: 40px;
-            z-index: 1;
-            }
-                
+    .content {
+      position: relative;
+      padding: 1rem;
+      top: -40px;
 
-            &:hover{
-                height: 440px;
-                .content p {
-                    opacity: 1;
-                }
-            }
-            .pic{
-                width: 100%;
-                height: 260px;
-                background-size: cover;
-                background-color: rgb(116, 116, 216);
-                position: relative;
-                
-                
-                &::before{
-                    content: "";
+      z-index: 2;
 
-                }
-                &::after{
-                    content: "";
-                    
-                }
-            }
-            .content{
-                position: relative;
-                padding: 1rem;
-                top: -40px;
-                z-index: ;
-                h4{
-                    text-transform: uppercase;
-                    margin-bottom: 0.5rem;
-                    &::before{
-                        content: "...";
-                        color: rgb(39, 44, 44);
-                    }
-                    &::after{
-                         content: "...";
-                         color: rgb(40, 43, 42);
-                    }
-                }
-                h5{
-                     margin-bottom: 0.5rem;
-                }
-                p{
-                    opacity: 0;
-                    font-size: 0.9rem;
-                    transition: .5s; 
-                }
-                
-            }
-            &:nth-child(1) .pic{
-                background-image: url(pic1.jpg);
-            ;}
-            &:nth-child(2) .pic{
-                background-image: url(pic1.jpg);
-            ;}
-            &:nth-child(3) .pic{
-                background-image: url(pic1.jpg);
-            ;}
-            &:nth-child(4) .pic{
-                background-image: url(pic1.jpg);
-            ;}
+      h4 {
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
 
-
-        
+        &::before {
+          content: "···";
+          color: rgb(47, 47, 47);
         }
 
+        &::after {
+          content: "···";
+          color: rgb(47, 47, 47);
+        }
+      }
 
+      h5 {
+        margin-bottom: 0.5rem;
+      }
 
+      p {
+        opacity: 0;
+        font-size: 0.9rem;
+        transition: 0.5rem;
+      }
+    }
 
+    &:nth-child(1) .pic {
+      background-image: url(pic1.jpg);
+    }
+    &:nth-child(2) .pic {
+      background-image: url(pic2.jpg);
+    }
+    &:nth-child(3) .pic {
+      background-image: url(pic3.jpg);
+    }
+    &:nth-child(4) .pic {
+      background-image: url(pic4.jpg);
+    }
+  }
+}
 
-
-
-
+#s1:checked ~ .dots label [for="s1"], 
+#s2:checked ~ .dots label [for="s2"],
+#s3:checked ~ .dots label [for="s3"] {
+  background-color: yellowgreen;
+  transform: scale(1.1);
 
 }
-/*el z-index */
-/*hace que uno se sub aencima del otro . este expresa el nievl de capa cuando lo subes verticalemete */
 
-/*para hacre el borde inverso hay que poner un circulo y hay que ponerle una sobra del mismo color del de abajoy al círculo hay que ponelo trasparente  */
+/* El control de los radio-button mejor hacerlos sin nesting */
+
+/* -------------------------------------------- CONTROLAMOS EL SLIDER ----------------------------------------------*/
+
+  /* Si pinchamos en el primer dot el slider debe quedarse en la posición inicial, x=0 */
+  #s1:checked ~ .viewport .slider {transform: translateX(0);} 
+
+  /* Si pinchamos en el segundo dot se tienen que ver las fichas 2 y 3, con lo que perdemos 320px de la primera, en negativo porque va a la izqda */
+  #s2:checked ~ .viewport .slider {transform: translateX(-320px);}
+
+  /* Si pinchamos en el segundo dot se tienen que ver las fichas 3 y 4, con lo que perdemos 320px*2 de las cards 1 y 2, en negativo porque va a la izqda */
+  #s3:checked ~ .viewport .slider {transform: translateX(-640px);} 
+
+
+
+/* En s1 no hay anterior porque estamos en la primera posición, tenemos que ir a .n1 (ir a s2) */
+#s1:checked ~ .n1 { display:block }
+
+/* Estamos en el botón de enmedio, se mostrar .p2 (me lleva a s1) y .n2 (me lleva a s3) */
+#s2:checked ~ .p2,
+#s2:checked ~ .n2 { display: block }
+
+/* En s3 no hay posterior porque estamos en la última posición, tenemos que ir a .p3 (volver a s2) */
+#s3:checked ~ .p3 { display: block }
+
+
+
+/*HERMANO QUE COMPARTEN EL MISMO PARDE Y HACEIA ABAJ O NO TIENE QUE ESTAR SEGUIDOS ,EL +*/
+/*LIBRERIA DELMEET WOW SLIDER */
+
+
+/*380 , 420 , HAYQ UE VER HASTA DONDE E REMPO EL DISEÑO */
+
+
+
+
+   
