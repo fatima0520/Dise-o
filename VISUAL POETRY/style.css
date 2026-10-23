@@ -1,0 +1,129 @@
+/*notación BEM- Bloque,Elemento,Modificador*/
+
+/*fuentes embed*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@font-face {
+  font-family: "Author Signature";
+  src: url(fonts/AuthorSignature.ttf) format("truetype");
+  font-display: swap; /*Apply font when download*/
+}
+@font-face {
+  font-family: "Fen";
+  src: url(fonts/fen0210.ttf) format("truetype");
+  font-display: swap; /*Apply font when download*/
+}
+/*mini reset*/
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+p,
+blockquote,
+figure {
+  margin: 0;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/*alto y ancho definidos nw ing y hay que convertirla en responsiv */
+img {
+  display: block;
+  max-width: 100;
+  height: auto;
+}
+/*LE OBLIGA  APONER EL TIPO DE LETRA A ESTOS TRES */
+button,
+input,
+textarea {
+  font: inherit; /*form components inherit web site font */
+}
+
+/*CUSTOM PROPERTIES*/
+:root {
+  /*TODO EL ARBOL DEL DOM*/
+  --back-color: #fff;
+  --front--color: #1a1a1a;
+  --mustard: #ffc12d;
+  --paper: #f7f4ed;
+  --muted: #6b6b6b;
+
+  --font-display:
+    "Poppins", "Helevetica", sans-serif; /*va por orden de que no funcione y al final la familla */
+
+  /*el ancho maximo del vp*/
+  --container: 1840px;
+
+  /*podemos meter el border que tiene toda la pagina en clamp  */
+  --gutter: clamp(1.25rem, 3vw, 2.25rem);
+  /*separadores de seccion vertical*/
+  --section-space: clamp(5rem, 8.5vw, 9.5rem);
+  /*media para el movil por si en alçlgunos se vea muy separado entre uno y otro */
+  /*cercano a moviles */
+  @media (max-whidth: 640px) {
+    --section-space: clamp(4rem, 16vw, 5.5rem);
+  }
+}
+/*------------------------------------------------------------------ACCESIBILITY---------------------------------------------------------------------------------------------*/
+::selection {
+  background: var(--mustard);
+  color: var(--front--color);
+}
+/*(tap index)*/
+/*accesible focus indicator (elementos que van en ellos el focus) */
+:where(a, button, input, textarea, [tabindex]):focus-visible {
+  /*[tabindex]any element with tabindex attr */
+  outline: 1px solid var(--mustard);
+  outline-offset: 4px; /*Separate the outline by 4px*/
+}
+/*
+The solution (skip-link): It is an invisible link placed at the absolute beginning of the HTML code (usually the very first thing the keyboard reads).
+
+By default: It is hidden from view.
+
+When you press Tab for the first time: The link comes to life, appears on screen (thanks to pseudo-classes like :focus or :focus-visible), and says something like "Skip to main content".
+
+Upon clicking (Enter): It jumps directly to the page's main content, saving the user from navigating through the entire menu.
+
+The skip-link allows keyboard users to bypass repetitive menus and go straight to the main content. CSS provides the perfect visual infrastructure (visible focus and compensated scroll margin) for these accessible interactions to work smoothly and elegantly.
+*/
+.skip-link {
+    position: fixed;
+    top: .75rem;
+    left: .75rem;
+    z-index: 9999;
+    padding: 1rem 1.2rem;
+    background: var(--front--color);
+    color: var(--back-color);
+    font-family: var(--font-display);
+    font-size: .75rem;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transform: translateY(-180%);
+    transition: transform 180ms ease;
+
+    &:focus{
+        transform: translateY(0);
+    }
+
+}
+/*----------------------------------------------------------------------Regular style---------------------------------------------------------------------------------------------------------*/
+/*smooth scrolling*/
+html{
+    scroll-behavior: smooth;
+    /*avoid resize font when the device change orientation solo chrome y safari*/
+    -webkit-text-size-adjust: 100%;
+
+
+}
+body{
+    
+}

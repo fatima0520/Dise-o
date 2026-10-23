@@ -12,24 +12,43 @@
         <script src="js/burguer.js"></script>
     </head>
     <body>
+        <!--- para la gente que no tenga raton o algun problema -->
+        <a href="#main-content" class="skip-link">Skip to content</a>
+
+
+
         <!--como el headre se va a quedar fijo en la parte de arriba pues no hace falta metrelo dentro -->
-        <header class="site-header">
+        <header class="site-header ">
             <!-- el logo es un ancla para que me lleve al inicio de la pagina el ancla es un elemento contenedor por lllo tanto noo hay que crer un div y luego meter uçtento lo que sea  -->
-            <div class="container">
+            <div class="container header__inner ">
                 <!-- # el mismo sitio -->
                 <a href="#" class="brand" aria-lable="Visual POETRY- HOME ">
                     <svg width="300" height="150" viewBox="0 0 300 150"
                         fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="75" cy="75" r="75" fill="#00A991" />
+                        <circle cx="75" cy="75" r="75" fill="#ffc12d" />
                         <path
                             d="M225 150C183.579 150 150 116.421 150 75C150 33.5786 183.579 0 225 0V150Z"
-                            fill="#00A991" />
+                            fill="#ffc12d" />
                         <path
                             d="M300 150C258.579 150 225 116.421 225 75C225 33.5786 258.579 0 300 0V150Z"
-                            fill="#00A991" />
+                            fill="#ffc12d" />
                     </svg>
 
                 </a>
+                <!--menu burger-->
+                <button class="menu-toggle" id="nav-icon" type="button " aria-expanded="false" aria-controls="primary-navigation" aria-label="Open menue">
+                    <span></span>  <span></span>  <span></span>
+                </button>                                  <!--opcional este arialabel-->
+                <nav class="primary-nav" id="primary-navigation" aria-label="Primary">
+                    <ul class="primary-nav__list">
+                        <!--para la animacion data-replace-->
+                        <li><a href="#HOME" class="nav-link" data-replace="HOME">HOME</a></li>
+                        <li><a href="#ABOUT" class="nav-link">ABOUT</a></li>
+                        <li><a href="#PORTFOLIO" class="nav-link">PORTFOLIO</a></li>
+                        <li><a href="#EXIBITIONS" class="nav-link">EXIBITIONS</a></li>
+
+                    </ul>
+                </nav>
 
             </div>
 
